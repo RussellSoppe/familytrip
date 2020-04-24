@@ -1,0 +1,20 @@
+#myProgress {
+  width: 100%;
+  background-color: grey;
+}
+
+#myBar {
+  /*width: 0%;*/
+  height: 30px;
+  background-color: green;
+  transition: width 1s;
+}
+
+
+.cardiv{
+  position: relative;
+  left: 0vw - 100px;
+  height: 55px;
+  width: 100px;
+  transition: left 1s;
+}

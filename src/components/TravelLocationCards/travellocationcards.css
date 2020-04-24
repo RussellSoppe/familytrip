@@ -1,0 +1,102 @@
+.travel-location-card-outer-wrapper{
+	display: flex;
+	/*flex-wrap: wrap;*/
+	justify-content: space-around; 
+
+}
+
+/*Travel Card Main Design*/
+.travel-location-card-inner-wrapper{
+	position: relative;
+	width: 100px;
+	height: 200px;
+
+	background-color: #66BAD5;
+	margin: 15px;
+	border-radius: 25px;
+	transition: width 0.50s, height 0.5s;
+
+	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+
+.travel-location-card-inner-wrapper:hover{
+	width: 315px;
+	height: 300px;
+	background: #008CBA;
+	cursor: pointer;
+	visibility: visible;
+}
+
+.travel-location-card-cover-wrapper{
+	position: absolute;
+	width: 100px;
+	height: 200px;
+
+	background-color: rgba(0, 0, 0, 0);
+	
+	border-radius: 25px;
+}
+
+.travel-location-card-cover-wrapper:hover{
+	width: 315px;
+	height: 300px;
+	cursor: pointer;
+}
+
+/*Travel Card Overlays*/
+.travel-card-selected-overlay,
+.travel-card-null-overlay{
+	position: absolute;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+
+	border-radius: 25px;
+	transition: width 0.50s, height 0.5s;
+}
+
+.travel-card-selected-overlay{
+	background-color:rgba(0,255,0,.3);
+}
+
+.travel-card-null-overlay{
+	background-color:rgba(255,0,0,0.3);
+}
+
+.travel-card-selected-overlay:hover,
+.travel-card-null-overlay:hover{
+	width: 315px;
+	height: 300px;
+}
+
+
+/*Travel Card Various Elements*/
+
+.travel-location-card-inner-wrapper > h2, 
+.travel-location-card-inner-wrapper > h4{
+	margin: 0px 0px 0px 5px;
+	padding: 0px 0px 0px 5px;
+
+	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+
+.travel-location-card-inner-wrapper > h4{
+	transition: visibility 0.20s;
+	visibility: hidden;
+}
+
+.travel-location-card-inner-wrapper:hover > h4{
+	visibility: visible;
+}
+
+.travel-location-card-inner-wrapper > img{
+	width: 100%;
+	height: 50%;
+	object-fit: cover;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	/*border: solid green 2px;*/
+}
+
