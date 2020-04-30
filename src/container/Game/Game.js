@@ -23,25 +23,39 @@ class Game extends React.Component {
     totaltraveldistance: 0,
     
     // Game
+    currenteventdescription: "",
 
+    // Bools used for UI buttons, false === display: none
+    travelgobuttonbool: true,
+    currenteventbool: false,
+    destinationbool: false,
+    shopbool: false,
+
+    //Used to disable travel button while traveling
+    travelgobuttondisable: false,
+    
     // // HUD
 
-    // // Travel    
+    // // Travel
+    chanceofbadevent: 20,
+    currenttraveldistance: 0,
+    travelspeed: 10, 
 
+    
     // // Inventory
-     toggleinventoryscreen: false,
+    toggleinventoryscreen: false,
 
     // // Shop
-     toggleshopscreen: false, 
+    toggleshopscreen: false, 
 
     // // EndGame
-     EndGameClass: new EndGameClass(),
-     toggleendgame: false,
-
+    EndGameClass: new EndGameClass(),
+    toggleendgame: false,
 
     }
   }
 
+// Getters and Setters
 getTotalTravelDistance=()=>{
   return this.state.totaltraveldistance;
 }
@@ -52,6 +66,49 @@ setTotalTravelDistance=(value)=>{
   })
 }
 
+getCurrentTravelDistance=()=>{
+  return this.state.currenttraveldistance;
+}
+
+setCurrentTravelDistance=(value)=>{
+    this.setState({
+      currenttraveldistance: value
+    })
+}
+
+getCurrentEventDescription=()=>{
+  return this.state.currenteventdescription;
+}
+
+setCurrentEventDescription=(string)=>{
+  this.setState({
+    currenteventdescription: string
+  })
+}
+
+getTravelSpeed=()=>{
+  return this.state.travelspeed;
+}
+
+setTravelSpeed=(value)=>{
+  this.setState({
+    travelspeed: value
+  })
+}
+
+getChanceOfBadEvent=()=>{
+  return this.state.chanceofbadevent;
+}
+
+setChanceOfBadEvent=(value)=>{
+  this.setState({
+    chanceofbadevent: value
+  })
+}
+
+
+
+// Toggles
 toggleInventoryScreen=()=>{
   
   if(this.state.toggleinventoryscreen){
@@ -122,6 +179,58 @@ toggleEndGame=()=>{
 
 }
 
+// Button Display Toggles
+toggleInventoryButton=()=>{
+  if(this.state.currenteventbool){
+
+    this.setState({
+      currenteventbool: false
+    })
+
+  }else{
+    this.setState({
+      currenteventbool: true
+    })
+  }
+}
+
+toggleInventoryButtonOff=()=>{
+  this.setState({
+    currenteventbool:false
+  })
+}
+
+toggleShopButton=()=>{
+  if(this.state.shopbool){
+
+    this.setState({
+      shopbool: false
+    })
+
+  }else{
+    this.setState({
+      shopbool: true
+    })
+  }
+}
+
+toggleTravelGoButton=(bool)=>{
+  
+  this.setState({
+    travelgobuttonbool: bool
+  })
+}
+
+toggleTravelGoButtonDisable=(bool)=>{
+   
+  this.setState({
+    travelgobuttondisable: bool
+  })
+  
+}
+
+
+// Other
 startNewGame=()=>{
   this.props.onPageChange("Start");
   this.setState({
@@ -131,14 +240,9 @@ startNewGame=()=>{
 
 
 
+
+
 render(){ 
-
-console.log("Large Log: ", this.props.DestinationClass.getCurrentDestination().imgurl,
-this.props.DestinationClass.getNextDestination().name,
-this.props.DestinationClass.getCurrentDestination().name,
-this.props.DestinationClass.getCurrentDestination().distance);
-
-  // console.log(this.props.DestinationClass.getDistanceBetween(6));
   
   return (
 
@@ -151,20 +255,48 @@ this.props.DestinationClass.getCurrentDestination().distance);
         //TravelUIDistance
         destination = {this.state.destination}
         destinationdistance = {this.state.destinationdistance}
-        traveldistance = {this.state.traveldistance}
-        travelspeed = {this.state.travelspeed}
+        
+        getCurrentTravelDistance = {this.getCurrentTravelDistance}
+        getTravelSpeed = {this.getTravelSpeed}
       />
       {<Travel
+        getCurrentTravelDistance = {this.getCurrentTravelDistance}
+        getTravelSpeed = {this.getTravelSpeed}
+        getChanceOfBadEvent = {this.getChanceOfBadEvent}
+        getCurrentEventDescription = {this.getCurrentEventDescription}
+        getTotalTravelDistance={this.getTotalTravelDistance}
+
+        setCurrentTravelDistance = {this.setCurrentTravelDistance}
+        setCurrentEventDescription={this.setCurrentEventDescription}
+        setTotalTravelDistance={this.setTotalTravelDistance}
+
         DestinationClass = {this.props.DestinationClass}
         EndGameClass={this.state.EndGameClass}
-        getTotalTravelDistance={this.getTotalTravelDistance}
-        setTotalTravelDistance={this.setTotalTravelDistance}
+        
         PlayerInventory={this.props.Player.inventory}
+
         toggleScreenOff={this.toggleScreenOff}
         toggleShopScreen={this.toggleShopScreen}
         toggleInventoryScreen={this.toggleInventoryScreen}
         toggleEndGame={this.toggleEndGame}
+
         toggleendgamestate={this.state.toggleendgame}
+    
+        // toggles for buttons to display
+        toggleInventoryButton = {this.toggleInventoryButton}
+        toggleInventoryButtonOff = {this.toggleInventoryButtonOff}
+        toggleShopButton = {this.toggleShopButton}
+
+        // bools for buttons
+        travelgobuttonbool = {this.state.travelgobuttonbool}
+        currenteventbool = {this.state.currenteventbool}
+        destinationbool = {this.state.destinationbool}
+        shopbool = {this.state.shopbool}
+
+        //Used to disable travel button while traveling
+        toggleTravelGoButton = {this.toggleTravelGoButton}
+        toggleTravelGoButtonDisable = {this.toggleTravelGoButtonDisable}
+        travelgobuttondisable = {this.state.travelgobuttondisable}
       />}
 
       <Inventory
@@ -180,7 +312,7 @@ this.props.DestinationClass.getCurrentDestination().distance);
         PlayerInventory={this.props.Player.inventory}
       /> 
       <EndGame
-        toggleendgame = {this.state.toggleendgame}
+        toggleendgamestate = {this.state.toggleendgame}
         startNewGame = {this.startNewGame}
       />
     </div>

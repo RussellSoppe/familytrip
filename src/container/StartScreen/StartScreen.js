@@ -1,7 +1,10 @@
 import React from 'react';
 import './StartScreen.css';
 
-import TravelLocationCards from '../../components/TravelLocationCards/travellocationcards.js';
+import TravelLocationCards from '../../components/TravelLocationCards/TravelLocationCards.js';
+import PlayerClassChoices from '../../components/PlayerClassChoices/PlayerClassChoices.js';
+
+import InventoryClass from '../../classes/InventoryClass.js';
 
 class StartScreen extends React.Component {
   constructor (props) {
@@ -9,10 +12,9 @@ class StartScreen extends React.Component {
 
     this.state = {
       playername: "",
-      cardoverlay: true,
-      cardoverlaycolor: "red",
       current_card_id: 0,
-      next_card_id: 1
+      next_card_id: 1,
+      inventory: {}
     }
   }
 
@@ -22,17 +24,12 @@ onPlayerNameSelect=(event)=>{
   })
 }
 
-onDestinationChoice=(key)=>{
+
+playerStartingInventory=(inventory)=>{
   this.setState({
-    cardoverlay: false  
+    inventory:inventory
   })
-
-  this.props.DestinationClass.setCurrentDestination(key);
-  this.props.DestinationClass.addDestinationToTrackingArray(key);
-  
 }
-
-
 
 render(){ 
 
@@ -50,6 +47,12 @@ render(){
           <h2>Starting Location: Home</h2>
           <img id="starting-location-img" src={this.props.DestinationClass.getDestination('home').imgurl} alt="The Yellow Brick Road."></img>
           
+          <h2>Choose your player class below:</h2>
+
+          <PlayerClassChoices
+            playerStartingInventory = {this.playerStartingInventory}
+          />
+
           <h2>Choose Your First Destination Below:</h2>
 
           <TravelLocationCards
@@ -70,7 +73,7 @@ render(){
           </h2>
           <button className="start-button" onClick={()=>{
             
-            this.props.createPlayer(this.state.playername);
+            this.props.createPlayer(this.state.playername, this.state.inventory);
             this.props.onPageChange("Game");
 
           }}>Start</button>

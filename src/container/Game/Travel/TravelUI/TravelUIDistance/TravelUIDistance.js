@@ -7,10 +7,26 @@ class TravelUIDistance extends React.Component {
     super (props)
 
     this.state = {
-      
+      currentlocationkey: this.props.DestinationClass.getCurrentLocation().id,
+      currentdestinationkey: this.props.DestinationClass.getCurrentDestination().id,
     }
   }
 
+
+distanceDisplay=()=>{
+  let distancebetween = this.props.DestinationClass.getDistanceBetween(this.state.currentlocationkey, this.state.currentdestinationkey);
+  let current = this.props.getCurrentTravelDistance();
+  let remaining = distancebetween - current;
+
+  if(remaining > 0){
+    
+    return remaining;
+
+  }else if (remaining <= 0){
+  
+    return 0;
+  }
+}
 
 render(){ 
 
@@ -27,12 +43,12 @@ render(){
             {this.props.DestinationClass.getCurrentDestination().name}
           </div>
           <div className="distancetonumbertext">
-            {this.props.DestinationClass.getCurrentDestination().distance - this.props.traveldistance}
+            {this.distanceDisplay()}
           </div>
       </div>
       <div className="destination-ui-div" >
           <h4>Travel Speed: </h4>
-          <div>{this.props.travelspeed} mph</div>
+          <div>{this.props.getTravelSpeed()} mph</div>
       </div>
     </div>
 

@@ -1,0 +1,130 @@
+.PlayerClassChoices{
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.player-class-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  /*border: 1px solid #f1f1f1;*/
+
+  margin: 10px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.player-class-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.player-class-card-title{
+	position: absolute;
+	margin: 10px;
+	color: rgb(0, 0, 0);
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.player-class-icon-image{
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.player-class-card:hover .player-class-card-inner {
+  transform: rotateY(180deg);
+  cursor: pointer;
+}
+
+/* Position the front and back side */
+.player-class-card-front, 
+.player-class-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  border-radius: 25px;
+
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.player-class-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+
+/* Style the back side */
+.player-class-card-back {
+  background-color: #66BAD5;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/*Styles for Player Choices*/
+.player-class-card-front-true{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 25px;
+	background-color: rgba(0, 255, 0, .3);
+}
+
+.player-class-card-front-false{	
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 25px;
+	background-color: rgba(255, 0, 0, .3);
+	
+}
+
+.player-class-card-back-true{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 25px;
+	background-color: rgba(0, 255, 0, .3);
+	transform: rotateY(180deg);
+}
+
+.player-class-card-back-false{	
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 25px;
+	background-color: rgba(255, 0, 0, .3);
+	transform: rotateY(180deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

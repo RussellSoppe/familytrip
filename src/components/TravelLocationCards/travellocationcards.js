@@ -1,13 +1,24 @@
-import React from 'react';
-import './travellocationcards.css';
+import React, {useState} from 'react';
+import './TravelLocationCards.css';
 
-function TravelLocationCards({cardoverlay, cardoverlaycolor, onDestinationChoice, DestinationClass}) {
+function TravelLocationCards({DestinationClass}) {
+
+	const [cardoverlay, setCardOverlay] = useState(true);
 
 	let destinationarray = Object.entries(DestinationClass.getDestinations());
 	
+	const onDestinationChoice=(key)=>{
+
+	  setCardOverlay(false);
+
+	  DestinationClass.setCurrentDestination(key);
+	  DestinationClass.addDestinationToTrackingArray(key);
+	}
+
+
 	const destinationcards = destinationarray.map((value, index)=>{
 
-	let choicecheck = DestinationClass.checkDestinationTrackingArray(value[1].id);
+		let choicecheck = DestinationClass.checkDestinationTrackingArray(value[1].id);
 	
 
 		if(Number.isInteger(value[1].id)){
