@@ -29,6 +29,7 @@ class App extends React.Component {
       },
       DestinationClass: new DestinationClass(destinations),
       
+
       // Start Screen
 
       // Game
@@ -51,11 +52,11 @@ onPageChange=(value)=>{
   })
 }
 
-createPlayer=(name)=>{
+createPlayer=(name, inventory)=>{
   this.setState({
     Player: {
       name: name,
-      inventory: new InventoryClass(15,25,3,500)
+      inventory: inventory
     }
   })
 

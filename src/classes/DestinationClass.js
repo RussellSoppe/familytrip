@@ -27,7 +27,7 @@ class DestinationClass {
   setCurrentLocation(key=0){
     this.currentlocation = this.destinations[key];
   }
-  // to be depricated
+ 
   getCurrentLocation(){
     return this.currentlocation;
   }
@@ -53,16 +53,21 @@ class DestinationClass {
     if(typeof this.getDestination(currentkey) !== 'undefined'){
 
       let here = this.getDestination(currentkey).location;
+      // console.warn(here);
      
       if(typeof this.getDestination(nextkey) !== 'undefined'){
 
         let there = this.getDestination(nextkey).location;
         let distancebetween = here - there;
 
+        // console.warn(here, there, distancebetween);
+
         if(distancebetween < 0){
           distancebetween = distancebetween * -1;
         }
         
+        // console.warn(here, there, distancebetween);
+
         return distancebetween;
 
       }

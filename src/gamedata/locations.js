@@ -6,7 +6,7 @@ import colliseum from "../images/colliseum.jpg";
 import finishline from "../images/finishline.jpg";
 import home from "../images/home.jpg";
 
-let destinations  = {
+let destinations = {
 	0: {
 		name: "Murky Lake",
 		location: 164,
@@ -55,7 +55,7 @@ let destinations  = {
 		location: 0,
 		distance: 0,
 		imgurl: home,
-		id: 'start'
+		id: 'home'
 	}
 }
 

@@ -12,9 +12,10 @@ class EndGame extends React.Component {
   }
 
 render(){ 
+  
   return (
 
-    <div id="endgame" style={this.props.toggleendgame ? {display:"inline"} : {display:"none"}}>
+    <div id="endgame" style={this.props.toggleendgamestate ? {display:"inline"} : {display:"none"}}>
       <div className="endgame-inner-container">
         <h1>Game Over</h1>
         <div>

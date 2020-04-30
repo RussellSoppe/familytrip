@@ -11,48 +11,53 @@ class TravelUI extends React.Component {
     super (props)
 
     this.state = {
-      
+      // currentdestination: this.props.DestinationClass.getCurrentDestination
     }
   }
 
 render(){
 
+
   return (
   	<div>
+    
 
-  		{<TravelUIDistance
-  			// From Travel
-				traveldistance = {this.props.traveldistance}
-  			travelspeed = {this.props.travelspeed}
-  			showdestinationpicture={this.props.showdestinationpicture}
+  	   {/*<div>{this.state.distancebetween}</div>
+       <div>{this.props.DestinationClass.getCurrentLocation().id}</div>
+       <div>{this.props.DestinationClass.getCurrentDestination().id}</div>*/}
 
-  			// From Game
+      <div className="currentevent">{this.props.getCurrentEventDescription()}</div>
+
+			<TravelUIStatusBar 
+        getCurrentTravelDistance = {this.props.getCurrentTravelDistance}
         DestinationClass = {this.props.DestinationClass}
-  		/>}
+        distancebetween = {this.props.distancebetween}
+      />
 
-	    <div className="currentevent">{this.props.currentevent}</div>
+      <TravelUINavButtons
+        travelGo = {this.props.travelGo}
 
-	    {<TravelUIStatusBar
-	    	traveldistance = {this.props.traveldistance}
-	    	destinationdistance = {this.props.destinationdistance}
-	    />}
-			
-			{<TravelUINavButtons
-				// temporary fix for toggling inventory
-				toggleInventoryScreen = {this.props.toggleInventoryScreen}
+        // toggle methods/functions
+        toggleScreenOff={this.props.toggleScreenOff}
+        toggleShopScreen={this.props.toggleShopScreen}
+        toggleInventoryScreen={this.props.toggleInventoryScreen}
+        toggleEndGame={this.props.toggleEndGame}
 
-				currentevent = {this.props.currentevent}
-				destintatonlocation = {this.props.destintatonlocation}
-				inventorybuttontoggle = {this.props.inventorybuttontoggle}
-				newtravelbutton = {this.props.newtravelbutton}
-				nextlocation = {this.props.nextlocation} 
-				toggleShopScreen = {this.props.toggleShopScreen}
-				travelbutton = {this.props.travelbutton}
-				travelbuttondisable = {this.props.travelbuttondisable} 
-				 
-				travelGo = {this.props.travelGo} 
-				startNewDestination = {this.props.startNewDestination}
-			/>}
+        // toggle state
+        toggleendgamestate={this.props.toggleendgame}
+
+        // bools
+        travelgobuttonbool = {this.props.travelgobuttonbool}
+        currenteventbool = {this.props.currenteventbool}
+        destinationbool = {this.props.destinationbool}
+        shopbool = {this.props.shopbool}
+
+        //Used to disable travel button while traveling
+        travelgobuttondisable = {this.props.travelgobuttondisable}
+
+      />
+
+
 
     </div>
   );
