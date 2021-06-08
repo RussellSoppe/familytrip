@@ -8,8 +8,8 @@
 /*Travel Card Main Design*/
 .travel-location-card-inner-wrapper{
 	position: relative;
-	width: 100px;
-	height: 200px;
+	width: 300px;
+	height: 285px;
 
 	background-color: #66BAD5;
 	margin: 15px;
@@ -30,12 +30,13 @@
 
 .travel-location-card-cover-wrapper{
 	position: absolute;
-	width: 100px;
-	height: 200px;
+	width: 300px;
+	height: 285px;
 
 	background-color: rgba(0, 0, 0, 0);
 	
 	border-radius: 25px;
+
 }
 
 .travel-location-card-cover-wrapper:hover{

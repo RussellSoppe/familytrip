@@ -1,39 +1,11 @@
 import React from 'react';
 import './PlayerClassChoices.css';
-import InventoryClass from '../../classes/InventoryClass.js';
 
-// images
-import policeicon from '../../images/player class icons/police_icon.png';
-import teachericon from '../../images/player class icons/teacher_icon.png';
-import softwaredevicon from '../../images/player class icons/software_dev_icon.png';
+//classes
+import InventoryClass from '../../../classes/InventoryClass.js';
 
-
-let playerClassesArray = [
-	{classObject:{
-		classtype: 'police',
-		classtitle: "Police Officer",
-		imageurl: policeicon,
-		inventory: new InventoryClass(25, 5, 40, 250),
-	}},
-	{classObject:{
-		classtype: 'teacher',
-		classtitle: "Teacher",
-		imageurl: teachericon,
-		inventory: new InventoryClass(10, 10, 15, 300),
-	}},
-	{classObject:{
-		classtype: 'software_engineer',
-		classtitle: "Software Engineer",
-		imageurl: softwaredevicon,
-		inventory: new InventoryClass(12, 2, 12, 800),
-	}}
-];
-
-// let playerclasschoicesarray = Object.entries(playerClasses);
-
-// console.log(playerclasschoicesarray[0][1].police.classtitle);
-
-// let array = [1, 2, 3];
+//data
+import playerClassArray from '../../../gamedata/playerclasstypes.js';
 
 class PlayerClassChoices extends React.Component {
   constructor (props) {
@@ -46,13 +18,13 @@ class PlayerClassChoices extends React.Component {
     }
   }
 
-	onPlayerClassChoice=(inventory, classtype)=>{
+	onPlayerClassChoice=(object)=>{
 		if(!this.state.playerchoiceon){
 
-			this.props.playerStartingInventory(inventory);
+			this.props.playerStartingObject(object);
 			
 			this.setState({
-				cardchoice: classtype,
+				cardchoice: object.classtype,
 				playerchoiceon: true
 			})
 		}
@@ -69,13 +41,12 @@ class PlayerClassChoices extends React.Component {
 
 	playerClassChoiceCards=()=>{
 
-		const cards = playerClassesArray.map((value, index)=>{
+		const cards = playerClassArray.map((value, index)=>{
 
 		let playerchoice = this.displayPlayerChoice(this.state.cardchoice, value.classObject.classtype);
 
-
 			return(
-				<div className="player-class-card" onClick={()=>this.onPlayerClassChoice(value.classObject.inventory, value.classObject.classtype)} key={index}>
+				<div className="player-class-card" onClick={()=>this.onPlayerClassChoice(value.classObject)} key={index}>
 					<div className="player-class-card-inner">
 
 						<div className="player-class-card-front">

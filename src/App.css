@@ -37,6 +37,22 @@ button:hover{
   cursor: pointer;
 }
 
+button:disabled{
+  background-color: #d3d3d3;
+  color: #FFF;
+  padding: 10px 20px;
+
+  border-radius: 25px;
+
+  box-shadow: none;
+  border: none;
+  margin: 10px;
+
+  cursor: not-allowed;
+}
+
+
+
 
 .alert-stripe{
   width: 100vw;

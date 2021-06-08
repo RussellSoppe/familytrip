@@ -1,9 +1,11 @@
 import React from 'react';
 import './StartScreen.css';
 
-import TravelLocationCards from '../../components/TravelLocationCards/TravelLocationCards.js';
-import PlayerClassChoices from '../../components/PlayerClassChoices/PlayerClassChoices.js';
+//Containers
+import TravelLocationCards from '../Game/TravelLocationCards/TravelLocationCards.js';
+import PlayerClassChoices from '../Game/PlayerClassChoices/PlayerClassChoices.js';
 
+//Classes
 import InventoryClass from '../../classes/InventoryClass.js';
 
 class StartScreen extends React.Component {
@@ -14,7 +16,8 @@ class StartScreen extends React.Component {
       playername: "",
       current_card_id: 0,
       next_card_id: 1,
-      inventory: {}
+      inventory: {},
+      classtype: {}
     }
   }
 
@@ -25,9 +28,10 @@ onPlayerNameSelect=(event)=>{
 }
 
 
-playerStartingInventory=(inventory)=>{
+playerStartingObject=(object)=>{
   this.setState({
-    inventory:inventory
+    inventory:object.inventory,
+    classtype: object
   })
 }
 
@@ -44,21 +48,23 @@ render(){
 
         <div>
           
-          <h2>Starting Location: Home</h2>
+          {/*
+            <h2>Starting Location: Home</h2>
           <img id="starting-location-img" src={this.props.DestinationClass.getDestination('home').imgurl} alt="The Yellow Brick Road."></img>
-          
+          */}
           <h2>Choose your player class below:</h2>
 
           <PlayerClassChoices
-            playerStartingInventory = {this.playerStartingInventory}
+            playerStartingObject = {this.playerStartingObject}
           />
 
-          <h2>Choose Your First Destination Below:</h2>
+          <h2>Choose Your Starting Location:</h2>
 
           <TravelLocationCards
             DestinationClass = {this.props.DestinationClass}
             onDestinationChoice = {this.onDestinationChoice}
             cardoverlay = {this.state.cardoverlay}
+            destinations ={this.props.DestinationClass.getStartingLocations()}
           />
 
         </div>
@@ -73,7 +79,8 @@ render(){
           </h2>
           <button className="start-button" onClick={()=>{
             
-            this.props.createPlayer(this.state.playername, this.state.inventory);
+            //player speed default is set in Player ClassTravelClass
+            this.props.createPlayer(this.state.playername, this.state.inventory, this.state.classtype);
             this.props.onPageChange("Game");
 
           }}>Start</button>

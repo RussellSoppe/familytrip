@@ -13,7 +13,7 @@ import InventoryClass from './classes/InventoryClass';
 import DestinationClass from './classes/DestinationClass';
 
 // assets
-import destinations from './gamedata/locations';
+import travelwest from './gamedata/travelwest';
 
 class App extends React.Component {
   constructor (props) {
@@ -25,9 +25,10 @@ class App extends React.Component {
       playername: "",
       Player: {
         name: "John Doe",
-        inventory: new InventoryClass(1, 25, 3, 500)
+        inventory: new InventoryClass(1, 25, 3, 500),
+        classtype: {}
       },
-      DestinationClass: new DestinationClass(destinations),
+      DestinationClass: new DestinationClass(travelwest, travelwest.startinglocations),
       
 
       // Start Screen
@@ -46,81 +47,68 @@ class App extends React.Component {
     }
   }
 
-onPageChange=(value)=>{
-  this.setState({
-    currentpage: value
-  })
-}
-
-createPlayer=(name, inventory)=>{
-  this.setState({
-    Player: {
-      name: name,
-      inventory: inventory
-    }
-  })
-
-}
-
-
-render(){ 
-
-
-  if(this.state.currentpage === "Start"){
-
-    return(
-      <div>
-        <Header/>
-        <StartScreen
-          onPageChange = {this.onPageChange}
-          createPlayer = {this.createPlayer}
-          DestinationClass = {this.state.DestinationClass}
-        />
-      </div> 
-    );
-
-  }else if(this.state.currentpage === "Game"){
-
-    return(
-      <div> 
-        <Header/>
-        <Game
-          onPageChange = {this.onPageChange} 
-          Player = {this.state.Player}
-          DestinationClass = {this.state.DestinationClass}
-        />
-      </div>
-    );
-
-  }else if(this.state.currentpage === "GameOver"){
-
-    return(
-      <div>
-        <Header/>
-        <GameOver/>
-      </div>
-    );
-  }else{
-
+  onPageChange=(value)=>{
     this.setState({
-      currentpage: "Start"
+      currentpage: value
     })
+  }
 
-    return(
-      <div>
-        <Header/>
-        <StartScreen
-          onPageChange = {this.onPageChange}
-          createPlayer = {this.createPlayer}
-          DestinationClass = {this.state.DestinationClass}
-        />
-      </div> 
-    );
+  createPlayer=(name, inventory, classtype)=>{
+    this.setState({
+      Player: {
+        name: name,
+        inventory: inventory,
+        classtype: classtype, 
+        status: {
+          travelspeed: 5
+        }
+      }
+    })
 
   }
 
-  
 
-}}//render and class closures
+  render(){ 
+    
+    if(this.state.currentpage === "Start"){
+
+      return(
+        <div>
+          <Header/>
+          <StartScreen
+            onPageChange = {this.onPageChange}
+            createPlayer = {this.createPlayer}
+            DestinationClass = {this.state.DestinationClass}
+          />
+        </div> 
+      );
+
+    }else if(this.state.currentpage === "Game"){
+
+      return(
+        <div> 
+          <Header/>
+          <Game
+            onPageChange = {this.onPageChange} 
+            Player = {this.state.Player}
+            DestinationClass = {this.state.DestinationClass}
+          />
+        </div>
+      );
+
+    }else if(this.state.currentpage === "GameOver"){
+
+      return(
+        <div>
+          <Header/>
+          <GameOver/>
+        </div>
+      );
+    }
+
+    
+
+  }
+}
 
 export default App;

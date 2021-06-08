@@ -1,86 +1,70 @@
 
 class DestinationClass {
 
-  constructor(destinations, startlocation) {
-    this.destinations = destinations;
-    this.startlocation = startlocation;
-    this.currentlocation = this.destinations['home'];
-    this.nextdestination = this.destinations[0];
-    this.currentdestination = null;
-    this.destinationtrackingarray = [];
+  constructor(alldestinations) {
+    this.alldestinations = alldestinations;
+    this.startinglocations = alldestinations.startinglocations;
+    this.startlocation = {}; 
+    this.destination = {
+      name: "Grocery Store",
+      location: 50,
+      imgurl: 'www.nopic.com/pic.jpg',
+      id: 0,
+      next_leg: null
+    };
+    this.currentlocation = {
+      name: "Home",
+      location: 0,
+      imgurl: 'www.nopic.com/pic.jpg',
+      id: 0,
+      next_leg: null
+    };
+
   }
 
-  getDestinations(){
-    return this.destinations;
+  getAllDestinations(){
+    return this.alldestinations;
   }
 
-  // to be depricated
-  getDestination(key=0){
-  	return this.destinations[key];
+  getStartingLocations(){
+    return this.startinglocations;
+  }
+
+  setDestination(object){
+    this.destination = object;
+  }
+
+  getDestination(){
+    return this.destination;
+  }
+  
+  setStartLocation(object){
+    this.startlocation = object;
   }
 
   getStartLocation(){
-  	return this.startlocation;
+    return this.startlocation;
   }
 
-  // to be depricated
-  setCurrentLocation(key=0){
-    this.currentlocation = this.destinations[key];
+  setCurrentLocation(object){
+    this.currentlocation = object;
   }
  
   getCurrentLocation(){
     return this.currentlocation;
   }
 
-  setCurrentDestination(key=0){
-    this.currentdestination = this.destinations[key];
-  }
+  getDistanceBetween(startobject = this.currentlocation, endobject = this.destination){
 
-  getCurrentDestination(){
-    return this.currentdestination;
-  }
+    let distancebetween = startobject.location - endobject.location;
 
-  setNextDestination(key=0){
-    this.nextdestination = this.destinations[key];
-  }
-
-  getNextDestination(){
-    return this.nextdestination;
-  }
-
-  getDistanceBetween(currentkey = 'home', nextkey = 0){
-   
-    if(typeof this.getDestination(currentkey) !== 'undefined'){
-
-      let here = this.getDestination(currentkey).location;
-      // console.warn(here);
-     
-      if(typeof this.getDestination(nextkey) !== 'undefined'){
-
-        let there = this.getDestination(nextkey).location;
-        let distancebetween = here - there;
-
-        // console.warn(here, there, distancebetween);
-
-        if(distancebetween < 0){
-          distancebetween = distancebetween * -1;
-        }
-        
-        // console.warn(here, there, distancebetween);
-
-        return distancebetween;
-
-      }
+    if(distancebetween <= 0){
+      distancebetween = distancebetween * -1;
     }
+    
+    return distancebetween;
   }
 
-  addDestinationToTrackingArray(key){
-      this.destinationtrackingarray.push(key);
-  }
-
-  checkDestinationTrackingArray(key){
-      return(this.destinationtrackingarray.includes(key));
-  }
 
 }
 
