@@ -18,3 +18,14 @@
   width: 100px;
   transition: left 1s;
 }
+
+.travel-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px;
+}
+
+.travel-info>div{
+  margin: 5px;
+}

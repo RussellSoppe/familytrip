@@ -17,6 +17,9 @@ class EndGameClass {
   			
   		case object.getMyBarfBags() <= 0:
   			return ({bool: true, message:"Barf Bags empty, game over"});
+
+      // case object.getCurrentLocation() === 'finalarrival':
+      //   return ({bool: true, message:"You have arrived at your final destination!!! GAME OVER."});
   			
   		default:
   			return ({bool:false, message: "Keep going, you can do it!"});

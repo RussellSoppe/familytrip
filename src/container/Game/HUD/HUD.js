@@ -1,7 +1,7 @@
 import React from 'react'
 import './HUD.css';
 
-import TravelUIDistance from '../Travel/TravelUI/TravelUIDistance/TravelUIDistance.js';
+import TravelUIDistance from '../TravelUI/TravelUIDistance/TravelUIDistance.js';
 
 
 class HUD extends React.Component {
@@ -9,10 +9,25 @@ class HUD extends React.Component {
     super (props)
 
     this.state = {
-      test: false
+      totaldistance: this.props.PlayerTravelClass.getPlayerLocation()
     }
   }
 
+componentDidMount() {
+  this.timerDistance = setInterval(
+    ()=> this.updateDistance(), 500
+  );
+}
+
+componentWillUnmount() {
+  clearInterval(this.timerDistance);
+}
+
+updateDistance=()=>{
+  this.setState({
+    totaldistance: this.props.PlayerTravelClass.getPlayerLocation()
+  })
+}
 
 render(){ 
 
@@ -21,18 +36,17 @@ render(){
     <div>
     
       <div className="player-hud"> 
-        <h2>Player Name: {this.props.playername}</h2>
-        <h2>Total Distance Traveled: {this.props.totaltraveldistance}</h2>
-      </div>
-      
-      <TravelUIDistance
-        DestinationClass = {this.props.DestinationClass}
+
+        <div className="player-hud-profile-container">
+          <div className="player-hud-icon-container">
+            <img src={this.props.Player.classtype.imageurl} alt=""/>
+          </div>
+
+          <div className="player-hud-name">{this.props.Player.name}</div>
+        </div>
         
-        // where to calculate or get below???
-        getCurrentTravelDistance = {this.props.getCurrentTravelDistance}
-        getTravelSpeed = {this.props.getTravelSpeed}
-        showdestinationpicture={true}
-      />
+        <h3>Total Distance Traveled: {this.props.PlayerTravelClass.getPlayerLocation()}</h3>
+      </div>
 
     </div>
   );
