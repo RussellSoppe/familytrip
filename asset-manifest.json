@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/familytrip/static/css/main.b35bd2ad.chunk.css",
+    "main.js": "/familytrip/static/js/main.9f9968fa.chunk.js",
+    "main.js.map": "/familytrip/static/js/main.9f9968fa.chunk.js.map",
+    "runtime-main.js": "/familytrip/static/js/runtime-main.a493def9.js",
+    "runtime-main.js.map": "/familytrip/static/js/runtime-main.a493def9.js.map",
+    "static/js/2.4ad07c59.chunk.js": "/familytrip/static/js/2.4ad07c59.chunk.js",
+    "static/js/2.4ad07c59.chunk.js.map": "/familytrip/static/js/2.4ad07c59.chunk.js.map",
+    "index.html": "/familytrip/index.html",
+    "precache-manifest.12ca415ec63ae5cee30615880503454b.js": "/familytrip/precache-manifest.12ca415ec63ae5cee30615880503454b.js",
+    "service-worker.js": "/familytrip/service-worker.js",
+    "static/css/main.b35bd2ad.chunk.css.map": "/familytrip/static/css/main.b35bd2ad.chunk.css.map",
+    "static/js/2.4ad07c59.chunk.js.LICENSE.txt": "/familytrip/static/js/2.4ad07c59.chunk.js.LICENSE.txt",
+    "static/media/Flat Classic Car Vectors-01.svg": "/familytrip/static/media/Flat Classic Car Vectors-01.b68f3f2b.svg",
+    "static/media/chicago.jpg": "/familytrip/static/media/chicago.e93e1dd2.jpg",
+    "static/media/grandcanyon.jpg": "/familytrip/static/media/grandcanyon.e4daeda1.jpg",
+    "static/media/logo.jpg": "/familytrip/static/media/logo.913ec68c.jpg",
+    "static/media/memphis.jpg": "/familytrip/static/media/memphis.ca9d1e7e.jpg",
+    "static/media/minneapolis.jpg": "/familytrip/static/media/minneapolis.f7a43461.jpg",
+    "static/media/mtrushmore.jpg": "/familytrip/static/media/mtrushmore.b46a0dbd.jpg",
+    "static/media/police_icon.png": "/familytrip/static/media/police_icon.3ed848ec.png",
+    "static/media/software_dev_icon.png": "/familytrip/static/media/software_dev_icon.7f79b3f4.png",
+    "static/media/teacher_icon.png": "/familytrip/static/media/teacher_icon.a7225ab3.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a493def9.js",
+    "static/js/2.4ad07c59.chunk.js",
+    "static/css/main.b35bd2ad.chunk.css",
+    "static/js/main.9f9968fa.chunk.js"
+  ]
+}
